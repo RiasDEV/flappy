@@ -115,7 +115,14 @@ let telaAtiva = {};
 const Telas = {
     INICIO: {
         desenha(){
+            planoDeFundo.desenha();
+            flappyBird.desenha();
+            chao.desenha();
             mensagemGetReady.desenha();
+        },
+        click(){
+            mudaparatela(Telas.JOGO);
+
         },
         atualiza(){
 
@@ -129,6 +136,7 @@ Telas.JOGO = {
         flappyBird.desenha();
         chao.desenha();
     },
+    
     atualiza(){
         flappyBird.atualiza();
 
@@ -143,6 +151,13 @@ function loop() {
 
     requestAnimationFrame(loop);
 }
+
+
+window.addEventListener('click', function () {
+    if(telaAtiva.click) {
+        telaAtiva.click();
+    }
+});
 
 mudaparatela(Telas.INICIO);
 
